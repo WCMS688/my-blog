@@ -35,8 +35,12 @@ a:hover {
 }
 
 .container {
-  width: min(860px, calc(100% - 32px));
+  width: min(1160px, calc(100% - 40px));
   margin: 0 auto;
+}
+
+.page-single .container {
+  width: min(1360px, calc(100% - 40px));
 }
 
 .site-header {
@@ -74,7 +78,7 @@ a:hover {
 }
 
 main {
-  padding: 40px 0 64px;
+  padding: 48px 0 72px;
 }
 
 .hero,
@@ -91,7 +95,7 @@ main {
 .hero,
 .page-intro,
 .post {
-  padding: 28px;
+  padding: 34px;
 }
 
 .hero {
@@ -116,7 +120,7 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2.35rem, 4.8vw, 4.2rem);
 }
 
 h2 {
@@ -129,7 +133,7 @@ p {
 
 .lead {
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.12rem;
 }
 
 .meta {
@@ -148,8 +152,8 @@ p {
 
 .post-layout.has-toc {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 28px;
   align-items: start;
 }
 
@@ -167,7 +171,7 @@ p {
   border: 1px solid var(--line);
   border-radius: 18px;
   box-shadow: var(--shadow);
-  padding: 18px 18px 16px;
+  padding: 20px 20px 18px;
 }
 
 .toc-title {
@@ -180,7 +184,7 @@ p {
 .toc-nav {
   max-height: calc(100vh - 120px);
   overflow: auto;
-  padding-right: 4px;
+  padding-right: 6px;
 }
 
 .toc-nav #TableOfContents > ul,
@@ -188,29 +192,65 @@ p {
 .toc-nav ul,
 .toc-nav ol {
   margin: 0;
-  padding-left: 1.05rem;
+  padding-left: 0;
+  list-style: none;
 }
 
 .toc-nav li {
-  margin: 0.35rem 0;
+  margin: 0.3rem 0;
+}
+
+.toc-nav li ul,
+.toc-nav li ol {
+  margin-top: 0.4rem;
+  margin-left: 0.8rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid rgba(15, 118, 110, 0.12);
 }
 
 .toc-nav a {
-  display: inline-block;
+  display: block;
   color: var(--muted);
   font-size: 0.94rem;
   line-height: 1.5;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 0.18rem 0.45rem;
+  border-radius: 8px;
 }
 
 .toc-nav a:hover,
 .toc-nav a.is-active {
   color: var(--accent);
   text-decoration: none;
+  background: rgba(15, 118, 110, 0.08);
 }
 
 .content :is(h2, h3, h4, h5, h6) {
   scroll-margin-top: 92px;
+}
+
+.content {
+  font-size: 1.08rem;
+}
+
+.content p,
+.content li {
+  max-width: 72ch;
+}
+
+.content h2 {
+  margin-top: 2.6rem;
+  font-size: 2rem;
+}
+
+.content h3 {
+  margin-top: 2rem;
+  font-size: 1.45rem;
+}
+
+.content h4 {
+  margin-top: 1.6rem;
+  font-size: 1.18rem;
 }
 
 .card {
@@ -322,6 +362,19 @@ p {
   .post,
   .card {
     padding: 20px;
+  }
+
+  main {
+    padding: 28px 0 44px;
+  }
+
+  .container,
+  .page-single .container {
+    width: min(100%, calc(100% - 24px));
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
   }
 
   .pagination {

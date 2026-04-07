@@ -30,7 +30,7 @@ summaryLength = 120
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 4
-    ordered = true
+    ordered = false
 
   [markup.highlight]
     codeFences = true

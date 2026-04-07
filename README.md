@@ -16,30 +16,32 @@ hugo server
 
 ## 一键提交并推送
 
-仓库根目录已经提供脚本：
-
-```powershell
-.\publish.ps1
-```
-
-如果你想直接双击或用更短命令，也可以：
+日常使用统一走批处理入口：
 
 ```powershell
 .\publish.bat
 ```
 
-这个脚本也可以在资源管理器里直接双击运行。
+这个脚本可以在资源管理器里直接双击运行，也可以在终端中执行。
+
+`publish.bat` 内部会调用 `publish.ps1` 完成实际逻辑，所以你平时不需要直接运行 `ps1`。
+
+如果你想直接调用 PowerShell 版本，也仍然可以：
+
+```powershell
+.\publish.ps1
+```
 
 也可以带提交说明：
 
 ```powershell
-.\publish.ps1 -Message "新增文章：xxx"
+.\publish.bat -Message "新增文章：xxx"
 ```
 
 或：
 
 ```powershell
-.\publish.bat -Message "新增文章：xxx"
+.\publish.ps1 -Message "新增文章：xxx"
 ```
 
 ## 发布脚本行为
@@ -53,13 +55,13 @@ hugo server
 常用预演命令：
 
 ```powershell
-.\publish.ps1 -DryRun
+.\publish.bat -DryRun
 ```
 
 如果你确实需要定时发布未来文章，可以显式允许：
 
 ```powershell
-.\publish.ps1 -AllowFutureDate
+.\publish.bat -AllowFutureDate
 ```
 
 ## 新增文章
@@ -134,7 +136,7 @@ Hugo 就会自动生成：
 每次更新文章后执行：
 
 ```powershell
-.\publish.ps1
+.\publish.bat
 ```
 
 Cloudflare Pages 会自动重新构建部署。
@@ -142,5 +144,5 @@ Cloudflare Pages 会自动重新构建部署。
 如果这次包含站点级改动，也可以给“非文章改动”补一条说明：
 
 ```powershell
-.\publish.ps1 -Message "Update site layout"
+.\publish.bat -Message "Update site layout"
 ```
