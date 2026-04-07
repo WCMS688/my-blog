@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+
+{{ $description := site.Params.description }}
+{{ with .Description }}
+  {{ $description = . }}
+{{ else }}
+  {{ with .Summary }}
+    {{ $description = . | plainify | truncate 120 }}
+  {{ end }}
+{{ end }}
+
+<meta name="description" content="{{ $description }}">
+<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+{{ hugo.Generator }}

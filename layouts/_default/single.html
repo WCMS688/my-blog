@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <article class="post">
+    <header class="page-intro">
+      <h1>{{ .Title }}</h1>
+      {{ if eq .Section "posts" }}
+        <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
+      {{ end }}
+      {{ with .Description }}
+        <p class="lead">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}

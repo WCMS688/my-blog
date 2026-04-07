@@ -1,0 +1,50 @@
+baseURL = "https://your-blog.pages.dev/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
+title = "我的 Hugo 博客"
+hasCJKLanguage = true
+enableRobotsTXT = true
+summaryLength = 120
+
+[pagination]
+  pagerSize = 5
+  path = "page"
+
+[permalinks]
+  posts = "/posts/:slug/"
+
+[params]
+  description = "一个使用 Hugo 搭建并部署到 Cloudflare Pages 的极简博客。"
+  author = "Your Name"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    style = "github"
+    tabWidth = 2
+
+[[menu.main]]
+  identifier = "home"
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 3

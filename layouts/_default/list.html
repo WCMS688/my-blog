@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <section class="page-intro">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="content">{{ . }}</div>
+    {{ end }}
+  </section>
+
+  {{ $pages := .RegularPages.ByDate.Reverse }}
+  {{ $paginator := .Paginate $pages }}
+
+  <section class="post-list">
+    {{ range $paginator.Pages }}
+      <article class="card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
+        {{ with .Description }}
+          <p>{{ . }}</p>
+        {{ else }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+      </article>
+    {{ end }}
+  </section>
+
+  {{ partial "pagination.html" $paginator }}
+{{ end }}

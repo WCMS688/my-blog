@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <section class="hero">
+    <p class="eyebrow">Hugo + Cloudflare Pages</p>
+    <h1>{{ site.Title }}</h1>
+    <p class="lead">{{ site.Params.description }}</p>
+    {{ with .Content }}
+      <div class="content">{{ . }}</div>
+    {{ end }}
+  </section>
+
+  {{ $pages := where site.RegularPages "Section" "posts" }}
+  {{ $pages = $pages.ByDate.Reverse }}
+  {{ $paginator := .Paginate $pages }}
+
+  <section class="post-list">
+    {{ range $paginator.Pages }}
+      <article class="card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
+        {{ with .Description }}
+          <p>{{ . }}</p>
+        {{ else }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+      </article>
+    {{ end }}
+  </section>
+
+  {{ partial "pagination.html" $paginator }}
+{{ end }}
