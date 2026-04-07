@@ -76,6 +76,8 @@ function Get-EntryChangeKind {
 function Get-TomlScalar {
   param(
     [Parameter(Mandatory = $true)]
+    [AllowEmptyString()]
+    [AllowEmptyCollection()]
     [string[]]$Lines,
     [Parameter(Mandatory = $true)]
     [string]$Key
