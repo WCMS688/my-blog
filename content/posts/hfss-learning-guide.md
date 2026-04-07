@@ -1,6 +1,6 @@
 +++
 title = "Ansys HFSS 学习大纲：从计算逻辑到工程工作流"
-date = 2026-04-07T22:45:00+08:00
+date = 2026-04-07T19:00:00+08:00
 draft = false
 slug = "hfss-learning-guide"
 description = "面向高学习能力大学生的 HFSS 学习大纲，强调电磁学原理、有限元逻辑与工程工作流，而非机械式界面操作。"
