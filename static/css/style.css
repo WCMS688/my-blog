@@ -318,6 +318,25 @@ p {
   color: #134e4a;
 }
 
+.math-inline {
+  display: inline-block;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.math-inline sub,
+.math-inline sup {
+  font-style: normal;
+  font-size: 0.78em;
+}
+
+.math-block {
+  margin: 1.25rem auto 1.4rem;
+  text-align: center;
+  font-size: 1.08em;
+  line-height: 1.8;
+}
+
 .content pre,
 .content code {
   font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
