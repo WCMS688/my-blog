@@ -1,12 +1,10 @@
 {{ define "main" }}
   <section class="page-intro">
     <h1>{{ .Title }}</h1>
-    {{ with .Content }}
-      <div class="content">{{ . }}</div>
-    {{ end }}
+    <p class="lead">这是当前专栏下的文章列表。</p>
   </section>
 
-  {{ $pages := .RegularPages.ByDate.Reverse }}
+  {{ $pages := .Pages.ByDate.Reverse }}
   {{ $paginator := .Paginate $pages }}
 
   <section class="post-list">
@@ -14,7 +12,11 @@
       {{ range $paginator.Pages }}
         <article class="card">
           <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
+          <p class="meta">
+            {{ .Date.Format "2006-01-02" }}
+            {{ with .Params.columns }} · 专栏：{{ delimit . " / " }}{{ end }}
+            {{ with .Params.tags }} · 标签：{{ delimit . " / " }}{{ end }}
+          </p>
           {{ with .Description }}
             <p>{{ . }}</p>
           {{ else }}
@@ -24,8 +26,8 @@
       {{ end }}
     {{ else }}
       <article class="card">
-        <h2>这里还没有内容</h2>
-        <p>你可以先新增一篇文章，或者把现有 Markdown 文件放到对应目录。</p>
+        <h2>这个专栏还没有文章</h2>
+        <p>给文章加上对应的 <code>columns</code> 前言字段后，这里就会自动出现内容。</p>
       </article>
     {{ end }}
   </section>

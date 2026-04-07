@@ -13,15 +13,22 @@
   {{ $paginator := .Paginate $pages }}
 
   <section class="post-list">
-    {{ range $paginator.Pages }}
+    {{ if gt (len $paginator.Pages) 0 }}
+      {{ range $paginator.Pages }}
+        <article class="card">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
+          {{ with .Description }}
+            <p>{{ . }}</p>
+          {{ else }}
+            <p>{{ .Summary }}</p>
+          {{ end }}
+        </article>
+      {{ end }}
+    {{ else }}
       <article class="card">
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
-        {{ with .Description }}
-          <p>{{ . }}</p>
-        {{ else }}
-          <p>{{ .Summary }}</p>
-        {{ end }}
+        <h2>还没有文章</h2>
+        <p>你可以把 Markdown 文件放到 <code>content/posts/</code>，或者执行 <code>hugo new posts/your-post.md</code> 开始写作。</p>
       </article>
     {{ end }}
   </section>

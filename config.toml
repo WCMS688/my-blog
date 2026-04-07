@@ -13,6 +13,11 @@ summaryLength = 120
 [permalinks]
   posts = "/posts/:slug/"
 
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  column = "columns"
+
 [params]
   description = "记录建站、编程、工具与日常思考的极简博客。"
   author = "WCMS688"
@@ -21,6 +26,11 @@ summaryLength = 120
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = true
 
   [markup.highlight]
     codeFences = true
@@ -44,7 +54,13 @@ summaryLength = 120
   weight = 2
 
 [[menu.main]]
+  identifier = "columns"
+  name = "专栏"
+  url = "/columns/"
+  weight = 3
+
+[[menu.main]]
   identifier = "about"
   name = "关于"
   url = "/about/"
-  weight = 3
+  weight = 4

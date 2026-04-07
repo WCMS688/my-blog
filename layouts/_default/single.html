@@ -1,17 +1,74 @@
 {{ define "main" }}
-  <article class="post">
-    <header class="page-intro">
-      <h1>{{ .Title }}</h1>
-      {{ if eq .Section "posts" }}
-        <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
-      {{ end }}
-      {{ with .Description }}
-        <p class="lead">{{ . }}</p>
-      {{ end }}
-    </header>
+  {{ $toc := .TableOfContents }}
+  {{ $hasToc := gt (len (findRE "<li" $toc 1)) 0 }}
 
-    <div class="content">
-      {{ .Content }}
-    </div>
-  </article>
+  <div class="post-layout{{ if $hasToc }} has-toc{{ end }}">
+    <article class="post post-main">
+      <header class="page-intro">
+        <h1>{{ .Title }}</h1>
+        {{ if eq .Section "posts" }}
+          <p class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} · {{ delimit . " / " }}{{ end }}</p>
+        {{ end }}
+        {{ with .Description }}
+          <p class="lead">{{ . }}</p>
+        {{ end }}
+      </header>
+
+      <div class="content">
+        {{ .Content }}
+      </div>
+    </article>
+
+    {{ if $hasToc }}
+      <aside class="post-toc">
+        <div class="toc-card">
+          <p class="toc-title">文章目录</p>
+          <nav class="toc-nav">
+            {{ $toc }}
+          </nav>
+        </div>
+      </aside>
+    {{ end }}
+  </div>
+
+  {{ if $hasToc }}
+    <script>
+      (function () {
+        const toc = document.querySelector('.toc-nav');
+        if (!toc) return;
+
+        const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+        const headings = links
+          .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
+          .filter(Boolean);
+
+        if (!links.length || !headings.length) return;
+
+        const setActive = (id) => {
+          links.forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          });
+        };
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+            if (visible.length > 0) {
+              setActive(visible[0].target.id);
+            }
+          },
+          {
+            rootMargin: '-90px 0px -60% 0px',
+            threshold: 0.1
+          }
+        );
+
+        headings.forEach((heading) => observer.observe(heading));
+        setActive(headings[0].id);
+      })();
+    </script>
+  {{ end }}
 {{ end }}

@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <section class="page-intro">
+    <h1>{{ .Title }}</h1>
+    <p class="lead">这里按专栏整理文章，你可以把不同主题分别归档。</p>
+  </section>
+
+  <section class="post-list">
+    {{ if gt (len .Data.Terms.Alphabetical) 0 }}
+      {{ range .Data.Terms.Alphabetical }}
+        <article class="card">
+          <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></h2>
+          <p class="meta">共 {{ .Count }} 篇文章</p>
+        </article>
+      {{ end }}
+    {{ else }}
+      <article class="card">
+        <h2>还没有专栏</h2>
+        <p>在文章 Front Matter 里添加 <code>columns = ["专栏名"]</code> 后，这里会自动生成专栏。</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

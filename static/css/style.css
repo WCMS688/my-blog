@@ -142,6 +142,77 @@ p {
   gap: 18px;
 }
 
+.post-layout {
+  display: block;
+}
+
+.post-layout.has-toc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 22px;
+  align-items: start;
+}
+
+.post-main {
+  min-width: 0;
+}
+
+.post-toc {
+  position: sticky;
+  top: 92px;
+}
+
+.toc-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px 18px 16px;
+}
+
+.toc-title {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.toc-nav {
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.toc-nav #TableOfContents > ul,
+.toc-nav #TableOfContents > ol,
+.toc-nav ul,
+.toc-nav ol {
+  margin: 0;
+  padding-left: 1.05rem;
+}
+
+.toc-nav li {
+  margin: 0.35rem 0;
+}
+
+.toc-nav a {
+  display: inline-block;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.toc-nav a:hover,
+.toc-nav a.is-active {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.content :is(h2, h3, h4, h5, h6) {
+  scroll-margin-top: 92px;
+}
+
 .card {
   padding: 22px;
 }
@@ -255,5 +326,20 @@ p {
 
   .pagination {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 980px) {
+  .post-layout.has-toc {
+    grid-template-columns: 1fr;
+  }
+
+  .post-toc {
+    position: static;
+    order: -1;
+  }
+
+  .toc-nav {
+    max-height: none;
   }
 }
