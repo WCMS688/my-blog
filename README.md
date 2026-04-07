@@ -56,6 +56,20 @@ hugo new posts/my-new-post.md
 content/posts/
 ```
 
+如果文章里带图片，统一按下面的目录规则处理：
+
+```text
+static/uploads/文章-slug/图片名.png
+```
+
+Markdown 中这样引用：
+
+```md
+![配图说明](/uploads/文章-slug/图片名.png)
+```
+
+这类图片会和文章一起进入 Git 仓库，并随 `git push` 同步到 GitHub，Cloudflare Pages 部署时也会一并发布。
+
 文章头部建议使用这类 Front Matter：
 
 ```toml
