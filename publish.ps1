@@ -404,4 +404,15 @@ if ($NoPush) {
 }
 
 & git push
+if ($LASTEXITCODE -ne 0) {
+  $currentBranch = (& git branch --show-current).Trim()
+  if (-not $currentBranch) {
+    $currentBranch = "main"
+  }
+
+  Write-Host ""
+  Write-Host "Push failed, but local commit(s) were created successfully." -ForegroundColor Yellow
+  Write-Host "You can retry later with: git push origin $currentBranch" -ForegroundColor Yellow
+}
+
 exit $LASTEXITCODE
