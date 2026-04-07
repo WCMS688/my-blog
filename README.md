@@ -42,6 +42,26 @@ hugo server
 .\publish.bat -Message "新增文章：xxx"
 ```
 
+## 发布脚本行为
+
+发布脚本现在默认会做三件事：
+
+- 自动检查被修改文章的发布时间；如果文章不是 `draft`，且 `date` 或 `publishDate` 晚于当前时间，会直接拦截，避免 Hugo 把文章隐藏掉
+- 自动按文章拆分提交；如果这次同时改了多篇文章，会生成多个 commit，而不是糊成一个
+- 非文章类文件（例如 `config.toml`、模板、样式、README）会单独生成一个站点级 commit
+
+常用预演命令：
+
+```powershell
+.\publish.ps1 -DryRun
+```
+
+如果你确实需要定时发布未来文章，可以显式允许：
+
+```powershell
+.\publish.ps1 -AllowFutureDate
+```
+
 ## 新增文章
 
 方式一：用 Hugo 生成新文件
@@ -114,7 +134,13 @@ Hugo 就会自动生成：
 每次更新文章后执行：
 
 ```powershell
-.\publish.ps1 -Message "更新博客内容"
+.\publish.ps1
 ```
 
 Cloudflare Pages 会自动重新构建部署。
+
+如果这次包含站点级改动，也可以给“非文章改动”补一条说明：
+
+```powershell
+.\publish.ps1 -Message "Update site layout"
+```
