@@ -23,7 +23,7 @@ function Invoke-Git {
 }
 
 function Get-ChangedEntries {
-  $lines = Invoke-Git -Args @("status", "--porcelain=v1", "--untracked-files=all")
+  $lines = @(Invoke-Git -Args @("status", "--porcelain=v1", "--untracked-files=all"))
   $entries = @()
 
   foreach ($line in $lines) {
@@ -116,7 +116,7 @@ function Get-PostMetadata {
     }
   }
 
-  $content = Get-Content -Encoding utf8 $Path
+  $content = @(Get-Content -Encoding utf8 $Path)
   if ($content.Count -lt 3 -or $content[0].Trim() -ne "+++") {
     return [pscustomobject]@{
       Path          = $Path
@@ -299,7 +299,7 @@ function Invoke-CommitForPaths {
     throw "git add failed for: $($paths -join ', ')"
   }
 
-  $staged = Invoke-Git -Args (@("diff", "--cached", "--name-only", "--") + $paths)
+  $staged = @(Invoke-Git -Args (@("diff", "--cached", "--name-only", "--") + $paths))
   if ($staged.Count -eq 0) {
     return $false
   }
@@ -312,7 +312,7 @@ function Invoke-CommitForPaths {
   return $true
 }
 
-$changedEntries = Get-ChangedEntries
+$changedEntries = @(Get-ChangedEntries)
 if ($changedEntries.Count -eq 0) {
   Write-Host "No changes to commit."
   exit 0

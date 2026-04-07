@@ -161,6 +161,29 @@ p {
   min-width: 0;
 }
 
+.post.post-main {
+  padding: 0;
+  overflow: hidden;
+}
+
+.post.post-main > .page-intro {
+  margin: 0;
+  padding: 42px 44px 28px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.05), transparent 34%),
+    linear-gradient(180deg, rgba(248, 247, 244, 0.88), rgba(255, 255, 255, 0.98));
+}
+
+.post.post-main > .page-intro > * {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .post-toc {
   position: sticky;
   top: 92px;
@@ -231,11 +254,28 @@ p {
 
 .content {
   font-size: 1.08rem;
+  padding: 36px 44px 46px;
+}
+
+.post.post-main > .content > * {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post.post-main > .content > ul,
+.post.post-main > .content > ol,
+.post.post-main > .content > blockquote,
+.post.post-main > .content > pre,
+.post.post-main > .content > .highlight,
+.post.post-main > .content > table {
+  max-width: 920px;
 }
 
 .content p,
-.content li {
-  max-width: 72ch;
+.content li,
+.content blockquote {
+  max-width: none;
 }
 
 .content h2 {
@@ -375,6 +415,11 @@ p {
 
   h1 {
     font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .post.post-main > .page-intro,
+  .content {
+    padding: 24px 20px 28px;
   }
 
   .pagination {
