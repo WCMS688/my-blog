@@ -112,6 +112,12 @@ hugo --gc --minify --cacheDir D:\AAA_MyWorkplaces\MyBlog\.hugo_cache_local
   - `/posts/` 列表页是否正常
   - 单文章页目录是否正常
   - 移动端是否退化为单列布局
+- 在排查问题、修复 bug、确认框架限制或总结部署/发布经验后，若形成了对后续维护有价值的结论，应默认同步更新 `Memory.md`
+- 更新 `Memory.md` 时，优先记录：
+  - 已确认根因的问题
+  - 本项目特有的渲染/配置/部署限制
+  - 已验证可复用的处理结论或命令
+  - 后续 agent 容易重复踩坑的注意事项
 
 ## 不要做的事
 
@@ -124,3 +130,4 @@ hugo --gc --minify --cacheDir D:\AAA_MyWorkplaces\MyBlog\.hugo_cache_local
 ## 配套记忆文档
 
 工程运行与调试中积累的坑和关键背景，见 `Memory.md`。
+- 后续 agent 不应只在对话中解释结论；凡是确认有长期价值的经验，原则上都应补写进 `Memory.md`

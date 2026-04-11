@@ -141,6 +141,26 @@ hugo --gc --minify --cacheDir D:\AAA_MyWorkplaces\MyBlog\.hugo_cache_local
 
 - 如果 agent 侧推送无响应，不一定是 Git 命令错了，可能只是需要用户在本机完成认证
 
+### 6. 文章中的 LaTeX、Mermaid 和引用残留不会自动正确显示
+
+现象：
+
+- 文章正文里出现类似 `6†L9-L11` 这样的奇怪标记
+- `\(...\)`、`\[...\]`、`\sum`、`\omega` 之类公式原样出现在页面上
+- ```mermaid``` 代码块在页面上显示成源码，而不是流程图
+
+原因：
+
+- `6†L9-L11` 这类内容通常不是 Hugo 生成的，而是从网页、PDF 摘录或 AI 整理内容时，把原始引用锚点一并带进了 Markdown
+- 当前站点虽然在 `config.toml` 中开启了 `markup.goldmark.renderer.unsafe = true`，允许原始 HTML 通过，但**并没有**接入 KaTeX、MathJax 或 Hugo 的数学公式渲染方案，所以 LaTeX 语法不会自动转成公式
+- 当前站点也**没有**引入 Mermaid 前端脚本或初始化逻辑，因此 mermaid fenced code block 只会按普通代码块输出
+
+处理结论：
+
+- 发文时不要直接保留来自外部材料的引用锚点残留，发布前应全文搜索这类标记
+- 若站点仍保持当前轻量方案，公式优先写成 Hugo 可直接输出的 HTML 形式，避免依赖额外数学渲染脚本
+- 若文章需要流程表达，优先用普通列表、表格或静态图片；不要默认 mermaid 会自动生效
+
 ## 模板与布局记忆
 
 - 文章页右侧目录来自 `.TableOfContents`
