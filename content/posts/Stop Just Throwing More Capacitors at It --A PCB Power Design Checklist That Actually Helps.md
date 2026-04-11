@@ -1,3 +1,13 @@
++++
+title = "别再只会堆电容了：一份真正有用的 PCB 电源设计检查清单"
+date = 2026-04-11T20:00:00+08:00
+draft = false
+slug = "pcb-power-design-checklist"
+description = "从目标阻抗、去耦、电源过孔、PSRR、测量闭环到板级与封装协同，一份面向实际工程的 PCB 电源设计检查清单。"
+tags = ["PCB", "Power Integrity", "PI", "PDN", "电源设计"]
+categories = ["硬件设计"]
+columns = ["高速电路专栏"]
++++
 很多工程师一提到 PCB 电源设计，第一反应就是：稳压器选好、去耦电容摆上、再测一下纹波。  
 但只要系统进入中高速甚至高速数字设计，这套思路就很容易失效。
 
