@@ -1,6 +1,4 @@
-
-
-+++
+﻿+++
 title = "线短了，问题没少：高速高密电路与先进封装中的串扰问题"
 date = 2026-04-30T20:00:00+08:00
 draft = false
@@ -198,3 +196,73 @@ BGA 的 pin-out、HBM 的 interposer channel、TSV 的 signal/ground array、UCI
 - Ziyu Liu et al., "Crosstalk Noise of Octagonal TSV Array Arrangement Based on Different Input Signal", Processes, 2022: https://www.mdpi.com/2227-9717/10/2/260
 - "A Short Review of Through-Silicon via (TSV) Interconnects: Metrology and Analysis", Applied Sciences, 2023: https://www.mdpi.com/2076-3417/13/14/8301/html
 - Wen-Wei Shen, Kuan-Neng Chen, "Three-Dimensional Integrated Circuit (3D IC) Key Technology: Through-Silicon Via (TSV)", Nanoscale Research Letters, 2017: https://pmc.ncbi.nlm.nih.gov/articles/PMC5247381/
+## 中英术语对照表
+
+| 中文术语 | 英文术语 / 缩写 | 说明 |
+|---|---|---|
+| 印制电路板 | Printed Circuit Board, PCB | 承载器件、走线、平面和过孔的板级互连平台 |
+| 高速高密电路 | High-Speed High-Density Circuit | 同时具备高速信号和高互连密度的电路系统 |
+| 串扰 | Crosstalk | 一个信号通道通过电磁耦合干扰另一个信号通道的现象 |
+| 近端串扰 | Near-End Crosstalk, NEXT | 在受害线靠近侵扰源一端观测到的串扰 |
+| 远端串扰 | Far-End Crosstalk, FEXT | 在受害线远离侵扰源一端观测到的串扰 |
+| 侵扰信号 | Aggressor Signal | 产生串扰的信号或通道 |
+| 受害信号 | Victim Signal | 被串扰影响的信号或通道 |
+| 返回路径 | Return Path | 高频电流闭合的参考路径，通常依赖地平面或电源平面 |
+| 参考平面 | Reference Plane | 为高速信号提供回流路径和阻抗参考的平面层 |
+| 信号完整性 | Signal Integrity, SI | 关注高速信号波形、阻抗、反射、串扰、抖动和误码的工程领域 |
+| 电源完整性 | Power Integrity, PI | 关注电源噪声、压降、阻抗和瞬态响应的工程领域 |
+| 电磁干扰 | Electromagnetic Interference, EMI | 电磁噪声对本系统或外部系统造成的干扰 |
+| 球栅阵列封装 | Ball Grid Array, BGA | 以焊球阵列作为外部连接的封装形式 |
+| 焊球 | Solder Ball | BGA 等封装中用于外部互连的球形焊料连接点 |
+| 地焊球 | Ground Solder Ball | 连接地网络的焊球，常用于返回路径和高频屏蔽 |
+| 芯片焊盘 | Die Pad / Bond Pad | 芯片内部与封装连接的金属焊盘 |
+| 过孔 | Via | 连接不同 PCB 或封装层的垂直导通结构 |
+| 过孔阵列 | Via Field | BGA 或封装逃逸区域中的密集过孔区域 |
+| 过孔残桩 | Via Stub | 高速过孔中未参与传输的残留铜柱，会引入反射和谐振 |
+| 背钻 | Backdrilling | 去除过孔残桩以改善高速信号质量的加工方法 |
+| 扇出 | Fan-out / Escape Routing | 从 BGA 或高密器件焊盘逃逸到可布线区域的连接方式 |
+| 重新布线层 | Redistribution Layer, RDL | 封装内用于重新分配芯片 I/O 的金属布线层 |
+| 扇出封装 | Fan-out Packaging | 通过 RDL 把芯片 I/O 扩展到芯片外侧的先进封装形式 |
+| 微凸点 | Micro-bump | 2.5D/3D 封装中连接芯片和中介层/芯片的微小凸点 |
+| 硅中介层 | Silicon Interposer | 位于芯片之间的硅基高密互连载体，常用于 2.5D 封装 |
+| 2.5D 封装 | 2.5D Packaging | 多个芯片并排放在中介层上实现高密互连的封装方式 |
+| 3D 封装 / 3D 集成电路 | 3D Packaging / 3D Integrated Circuit, 3D IC | 多个芯片或晶圆垂直堆叠的集成方式 |
+| 硅通孔 | Through-Silicon Via, TSV | 穿过硅衬底的垂直互连结构 |
+| TSV 衬垫层 | TSV Liner | TSV 金属与硅衬底之间的绝缘/介质层 |
+| 衬底耦合 | Substrate Coupling | 噪声通过硅衬底或封装衬底传播和耦合的现象 |
+| 地 TSV | Ground TSV | 连接地网络的 TSV，用于返回路径、屏蔽或降低耦合 |
+| TSV 阵列 | TSV Array | 多个 TSV 组成的垂直互连阵列 |
+| 保持距离区 | Keep-Out Zone, KOZ | 为避免应力、电磁或工艺影响而在 TSV 周围预留的限制区域 |
+| 高带宽存储器 | High Bandwidth Memory, HBM | 常与硅中介层配合使用的高带宽堆叠存储器 |
+| 小芯片 | Chiplet | 被拆分出来并通过封装互连组合的功能芯片单元 |
+| 统一芯粒互连标准 | Universal Chiplet Interconnect Express, UCIe | 面向封装内 die-to-die 互连的开放标准 |
+| 芯片到芯片互连 | Die-to-Die Interconnect | 封装内部不同裸片之间的互连 |
+| 混合键合 | Hybrid Bonding | 同时实现金属互连和介质键合的高密 3D 连接技术 |
+| 凸点间距 | Bump Pitch | 相邻凸点中心之间的距离 |
+| 线距 | Spacing | 相邻走线或金属结构之间的距离 |
+| 线宽 | Trace Width | 单根走线的宽度 |
+| 差分信号 | Differential Signal | 由一对极性相反信号共同传输信息的信号方式 |
+| 差分 TSV | Differential TSV | 用 TSV 对承载差分信号的垂直互连形式 |
+| 屏蔽线 | Shield Trace | 用于隔离或降低耦合的接地/参考走线 |
+| 过孔栅栏 | Via Fence | 由一排或多排接地过孔形成的屏蔽结构 |
+| 地-信号-地结构 | Ground-Signal-Ground, GSG | 高频互连中常用的信号两侧布地结构 |
+| 宽边耦合 | Broadside Coupling | 不同层上下重叠走线之间的耦合 |
+| 边缘耦合 | Edge Coupling | 同层相邻走线边缘之间的耦合 |
+| 模式转换 | Mode Conversion | 差模、共模等传输模式之间的能量转换 |
+| 噪声传递函数 | Noise Transfer Function | 描述噪声从侵扰端传到受害端的频域关系 |
+| S 参数 | Scattering Parameters, S-parameters | 高频网络反射和传输特性的参数表达 |
+| 时域反射 / 透射 | Time-Domain Reflectometry / Transmission, TDR/TDT | 用时域方法观察阻抗不连续和传输特性 |
+| 眼图 | Eye Diagram | 评估高速链路波形裕量的叠加图形 |
+| 眼高 | Eye Height | 眼图垂直方向的噪声裕量 |
+| 眼宽 | Eye Width | 眼图水平方向的时序裕量 |
+| 抖动 | Jitter | 信号边沿在时间位置上的偏移 |
+| 同步开关噪声 | Simultaneous Switching Noise, SSN | 多个信号同时翻转引起的电源/地噪声 |
+| 低摆幅信号 | Low-Swing Signaling | 用较小电压摆幅传输数据以降低功耗的信号方式 |
+| 均衡 | Equalization | 用发射端或接收端补偿通道损耗和失真的技术 |
+| 编码 | Coding / Encoding | 用特定码型降低错误、功耗或串扰敏感性的信号表达方式 |
+| 延迟不敏感编码 | Delay-Insensitive Code | 对延迟变化不敏感的一类编码方式 |
+| 电源噪声角落 | Power Noise Corner | 电源噪声处于最差组合条件下的验证场景 |
+| 可靠性角落 | Reliability Corner | 制造、温度、老化和机械应力等最差可靠性条件 |
+| 铜凸起 | Copper Protrusion | TSV 铜因热机械效应突出，可能影响可靠性 |
+| 空洞 / 缝隙 | Void / Seam | TSV 或焊接结构中的制造缺陷 |
+
