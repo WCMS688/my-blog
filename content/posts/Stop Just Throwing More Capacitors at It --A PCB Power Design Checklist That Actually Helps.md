@@ -1,12 +1,13 @@
 +++
 title = "别再只会堆电容了：一份真正有用的 PCB 电源设计检查清单"
-date = 2026-05-01T20:00:00+08:00
+date = 2026-04-29T20:00:00+08:00
 draft = false
 slug = "pcb-power-design-checklist"
 description = "高速高密电路的 PCB 电源设计问题与检查清单。"
 tags = ["PCB", "Power Integrity", "PI", "PDN", "电源设计"]
 categories = ["硬件设计"]
 columns = ["高速电路专栏"]
+
 +++
 # 高速高密电路的 PCB 电源设计问题与检查清单
 
